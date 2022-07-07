@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>digital rain</title>
+    <style>
+        html {
+            background: black;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="Matrix"></canvas>
+    <form action="">
+        <input type="text" onload="aa();">
+        <button>stop</button>
+    </form>
+    <script>
+        const canvas = document.getElementById('Matrix');
+        const context = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const fontSize = 26;
+        const columns = canvas.width / fontSize;
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 2;
+        }
+        const draw = () => {
+            context.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.fillStyle = '#0F0';
+            context.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        setInterval(draw, 200);
+
+
+        function aa() {
+            var b = u.value;
+            var d = b.slice(-1);
+            var g = !0,
+                e = k - 50;
+            for (b = 0; 16 > b; b++) d == z[b] && (c[b].g = parseFloat(c[b].style.top) < e ? -.01 : -1, g && (l += B, g = !1, Q.textContent = l, L += 1), J++, 5 < J && (J = 0, u.value = "", u.focus()), w(c[b]), c[b].style.top = V + "px")
+        }
+    </script>
+</body>
+
+</html>
